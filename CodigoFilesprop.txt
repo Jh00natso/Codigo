@@ -1,0 +1,192 @@
+Operarios = ["Ignacio", "Bastian", "Juan", "Maria"]
+Contraseñas = [1111, 2222, 3333, 4444]
+Contraseñas_S = [1111, 2222]
+Supervisor = ["Jhonatan", "Cecilia"]
+Kilometraje =[0,0,0,0]
+Kilometraje_Semana = [0]
+Petroleo_Semana = [0]
+N_de_Orden = [0,0,0,0]
+Fecha = ["Fecha no registrada", "Fecha no registrada", "Fecha no registrada", "Fecha no registrada"]
+Petroleo = [0,0,0,0]
+Hora_Inicio = [0, 0, 0, 0]
+Hora_Final = [0, 0, 0, 0]
+                  
+    
+Intentos = 4
+x = 2
+while x != 0:
+    print("Indique con un número alguna de las siguientes opciones:")
+    print("1 - Operario:")
+    print("2 - Supervisor:")
+    print("3 - Cerrar Programa")
+    Respuesta1 = input()
+
+
+    if Respuesta1 == "1":
+        Respuesta2 = int(input("Ingrese su número de operario"))
+        if Respuesta2 < 4:
+            print(f'Hola {Operarios[int(Respuesta2)]}')
+            u=2
+            while u!=0:
+                print("¿Cual es tu contraseña?")
+                Contra = int(input())
+                if Contra == Contraseñas[int(Respuesta2)]:
+                  y= 2
+                  while y != 0:
+                    print("Que desea realizar?")
+                    print("1-Ingresar N° de orden")
+                    print("2-Ingresar Fecha")
+                    print("3-Ingresar kilometraje Recorrido")
+                    print("4-Ingresar Petroleo Consumido")
+                    print("5-Ingresar Hora de inicio y de termino de ruta")
+                    print("6-Volver al menu")
+                    Respuesta_3 = input()
+                    if Respuesta_3 == "1":
+                            print("Ingrese el N° de orden")
+                            N_Orden = int(input())
+                            N_de_Orden.pop(int(Respuesta2))
+                            N_de_Orden.insert(int(Respuesta2), N_Orden)
+                    elif Respuesta_3 == "2":
+                            print("Ingrese la fecha de esta forma Porfavor")
+                            print("dia/mes/año")
+                            Fecha_Operarios = input()
+                            Fecha.pop(int(Respuesta2))
+                            Fecha.insert(int(Respuesta2), Fecha_Operarios)
+                    elif Respuesta_3 == "3":
+                            print("Ingrese su kilometraje")
+                            Kilometraje_Operarios = int(input())
+                            Kilometraje.pop(int(Respuesta2))
+                            Kilometraje.insert(int(Respuesta2), Kilometraje_Operarios)
+                            Kilometraje_Semana.append(Kilometraje_Operarios)
+                            c = Kilometraje_Semana[0] + Kilometraje_Operarios
+                            Kilometraje_Semana.pop(0)
+                            Kilometraje_Semana.insert(0,c)
+                    elif Respuesta_3 == "4":
+                            print("Ingrese el petroleo consumido")
+                            Petroleo_Consu = int(input())
+                            Petroleo.pop(int(Respuesta2))
+                            Petroleo.insert(int(Respuesta2), Petroleo_Consu)
+                            v = Petroleo_Semana[0] + Petroleo_Consu
+                            Petroleo_Semana.pop(0)
+                            Petroleo_Semana.insert(0,v)
+                    elif Respuesta_3 == "5":
+                            print("Ingrese la hora del inicio de ruta (Am)")
+                            Hora_Inicio_O = int(input())
+                            print("Ingrese la hora de termino de ruta (Pm)")
+                            Hora_Termino_O = int(input())
+                            Hora_Inicio.pop(int(Respuesta2))
+                            Hora_Final.pop(int(Respuesta2))
+                            Hora_Inicio.insert(int(Respuesta2), Hora_Inicio_O)
+                            Hora_Final.insert(int(Respuesta2), Hora_Termino_O)
+                    elif Respuesta_3 == "6":
+                            y=0
+                            u=0
+                else:
+                    for i in range(1,4):
+                      print("Ingrese de nuevo la Contraseña")
+                      Intentos = Intentos - 1
+                      Contra = int(input())
+                      if Contra==Contraseñas[int(Respuesta2)]:
+                        print("Ingrese de nuevo")
+                        break
+                      else:
+                        print("Contraseña incorrecta le quedan", Intentos, "intentos")
+                        if Intentos==0:
+                             y=0
+                             u=0
+                             x=0
+                             break
+
+        if Respuesta2>=4:
+          print("id invalida, Por favor ingrese de nuevo")
+
+    elif Respuesta1 =="2":
+        print("Por favor indique su id")
+        Respuesta4 = int(input())
+        i =2
+        while i!=0:
+            if Respuesta4<2:
+                print("Bienvenido", Supervisor[int(Respuesta4)])
+                print("Por favor indique su contraseña")
+                Contra = int(input())
+                if Respuesta4>=2:
+                 print("Id invalida por favor ingrese de nuevo")
+                elif Contra==Contraseñas_S[Respuesta4]:
+                        z=2
+                        while z!=0:
+                            print("¿Que desea Hacer?")
+                            print("1-Ver todos los datos ingresados por un operario")
+                            print("2-Kilometraje Ingresado en la semana")
+                            print("3-Petroleo consumido en la semana")
+                            print("4-Hora de ingreso promedio")
+                            print("5-Hora de salida promedio")
+                            print("6.Volver al Menu")
+                            Respuesta5 = input()
+                            if Respuesta5=="1":
+                                for x in range(1,4):
+                                    print("Ingrese el id del operario, para ver sus datos")
+                                    Id = int(input())
+                                    print("Operativo Seleccionado=", Operarios[Id])
+                                    print("Kilometraje =", Kilometraje[Id])
+                                    print("N° de orden =", N_de_Orden[Id])
+                                    print("Fecha =", Fecha[Id])
+                                    print("Petroleo Consumido =", Petroleo[Id])
+                                    print("Hora de inicio de ruta =", Hora_Inicio[Id])
+                                    print("Hora de termino de ruta =", Hora_Final[Id])
+                                    print("¿Desea saber los datos de otro Operario?")
+                                    print("1-Si            2-No")
+                                    Respuesta5 = input()
+                                    if Respuesta5=="1":
+                                        print("Por favor")
+                                    else:
+                                        break
+                            elif Respuesta5=="2":
+                                print("El kilometraje total ingresado por los operarios (1 semana) es=")
+                                print(Kilometraje_Semana[0])
+                            elif Respuesta5=="3":
+                                print("El petroleo consumido en total (1 semana) es=")
+                                print(Petroleo_Semana[0])
+                            elif Respuesta5=="4":
+                                suma = 0
+                                g = 0
+                                while g<len(Hora_Inicio):
+                                    suma= suma + Hora_Inicio[g]
+                                    g = g+1
+                                print(float(suma/len(Hora_Inicio)))
+                            elif Respuesta5=="5":
+                                suma = 0
+                                g = 0
+                                while g<len(Hora_Final):
+                                    suma= suma + Hora_Final[g]
+                                    g = g+1
+                                print(float(suma/len(Hora_Final)))
+                            elif Respuesta5=="6":
+                                z=0
+                                i=0
+                elif Contra!=Contraseñas_S[Respuesta4]:
+                    Intentos= 4
+                    for i in range(1,4):
+                        print("Ingrese de nuevo la Contraseña")
+                        Intentos = Intentos - 1
+                        Contra = int(input())
+                        if Contra==Contraseñas[int(Respuesta4)]:
+                            print("Ingrese de nuevo")
+                            break
+                        else:
+                            print("Contraseña incorrecta le quedan", Intentos, "intentos")
+                            if Intentos==0:
+                                z=0
+                                x=0
+                                break
+    elif Respuesta1=="3":
+        x=0
+        break
+                
+
+                     
+
+                     
+                          
+                     
+
+                
